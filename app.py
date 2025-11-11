@@ -111,4 +111,5 @@ def handle_control(cmd):
 # === 5. 実行部 ===
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
