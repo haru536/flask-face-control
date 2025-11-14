@@ -38,7 +38,7 @@ display_html = """
         currentFace = msg;
         faceElem.innerText = currentFace;
 
-        // === 通常以外の表情なら4秒後に戻す ===
+        // === 通常以外の表情なら7秒後に戻す ===
         if (currentFace !== "•＿•") {
           // すでにタイマーが動いていたらリセット
           if (resetTimer) clearTimeout(resetTimer);
@@ -46,7 +46,7 @@ display_html = """
           resetTimer = setTimeout(() => {
             currentFace = "•＿•";
             faceElem.innerText = currentFace;
-          }, 4000); // 4秒後に戻す
+          }, 7000); // 7秒後に戻す
         }
       });
 
@@ -112,4 +112,5 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
