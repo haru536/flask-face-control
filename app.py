@@ -46,7 +46,7 @@ display_html = """
       // 表情ごとの位置設定
       const facePositions = {
         "•＿•": {top: "50%"},       // 通常
-        "＾◡＾": {top: "58%"},       // 笑顔
+        "＾◡＾": {top: "56%"},       // 笑顔
         "≧ ◡ ≦": {top: "55%"},      // 照れ
         ">﹏<": {top: "52%"},        // 悲しい
         "-`ω´-": {top: "55%"}       // キリっと
@@ -137,6 +137,7 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
 
 
