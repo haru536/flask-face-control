@@ -19,19 +19,38 @@ display_html = """
         align-items: center;           /* 縦方向の中央揃え */
         height: 100vh;                 /* 画面全体を使う */
         margin: 0;                     /* 余白なし */
-        font-size: 40vh;               /* 顔を大きく！ */
       }
     </style>
   </head>
   </body>
     <div id="status">•＿•</div>
 
+    <style>
+      #status {
+        position: absolute;  /* 中央配置から絶対位置に変更 */
+        top: 50%;            /* 初期は中央 */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25vh;
+        white-space nowrap;
+      }
+    </style>
+      
     <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
     <script>
       const socket = io();
       let currentFace = "•＿•"; // 現在の表情を保持
       const faceElem = document.getElementById("status");
       let resetTimer = null;   // 戻す用のタイマーを記録
+
+      // 表情ごとの位置設定
+      const facePositions = {
+        "•＿•": {top: "50%"},       // 通常
+        "＾◡＾": {top: "58%"},       // 笑顔
+        "≧ ◡ ≦": {top: "55%"},      // 照れ
+        ">﹏<": {top: "52%"},        // 悲しい
+        "-`ω´-": {top: "55%"}       // キリっと
+      };
 
       // Flaskから表情が送られてきたとき
       socket.on('update', (msg) => {
@@ -46,6 +65,7 @@ display_html = """
           resetTimer = setTimeout(() => {
             currentFace = "•＿•";
             faceElem.innerText = currentFace;
+            faceElem.style.top = facePositions["•＿•"].top;
           }, 7000); // 7秒後に戻す
         }
       });
@@ -112,6 +132,7 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
 
 
