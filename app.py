@@ -57,6 +57,11 @@ display_html = """
         currentFace = msg;
         faceElem.innerText = currentFace;
 
+        // 位置を変更
+        if(facePositions[currentFace]){
+          faceElem.style.top = facePositions[currentFace].top;
+        }
+
         // === 通常以外の表情なら7秒後に戻す ===
         if (currentFace !== "•＿•") {
           // すでにタイマーが動いていたらリセット
@@ -132,6 +137,7 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
 
 
