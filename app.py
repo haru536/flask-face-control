@@ -104,9 +104,9 @@ remote_html = """
   <body>
     <h1>Face Controller</h1>
     <button onclick="sendCommand('＾◡＾')">笑顔</button>
-    <button onclick="sendCommand('≧ ◡ ≦')">照れ</button>
+    <button onclick="sendCommand('≧ ◡ ≦')">照れ</button><br>
     <button onclick="sendCommand('>﹏<')">悲しい</button>
-    <button onclick="sendCommand('-`ω´-')">キリっと</button>
+    <button onclick="sendCommand('-`ω´-')">キリっと</button><br>
     <button onclick="sendCommand('•＿•')">通常</button>
     <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
     <script>
@@ -137,6 +137,7 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
 
 
