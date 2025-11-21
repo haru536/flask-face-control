@@ -102,7 +102,7 @@ remote_html = """
     <title>Face Controler</title>
   </head>
   <body>
-    <h1>Face Controller</h1>
+    <h1 style="font-size: 20px;">Face Controller</h1>
     <button onclick="sendCommand('＾◡＾')">笑顔</button>
     <button onclick="sendCommand('≧ ◡ ≦')">照れ</button><br>
     <button onclick="sendCommand('>﹏<')">悲しい</button>
@@ -137,6 +137,7 @@ def handle_control(cmd):
 if __name__ == '__main__':
     print("✅ サーバーを起動中... http://127.0.0.1:5000")
     socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+
 
 
 
